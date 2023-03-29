@@ -15,12 +15,7 @@ app.use(function (req, res, next) {
 });
 
 const cors=require('cors');
-app.use(cors({
-    credentials: true,
-    origin:['http://localhost:3000'],
-   
-   
-}));
+app.use(cors());
 
 //mogodb connection
 const db_connection = require('./configure/dbConnection');
