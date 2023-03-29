@@ -1,5 +1,6 @@
 const app=require('./app');
 const path=require('path')
+const cors=require('cors');
 
 //configure dot env
 const dotenv = require("dotenv");
@@ -14,7 +15,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-const cors=require('cors');
+
 app.use(cors());
 
 //mogodb connection
