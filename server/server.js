@@ -26,12 +26,6 @@ db_connection(URL);
 
 
 
-
-
-
-
-
-
 const PORT=process.env.PORT
 // server setup
 app.listen(PORT,()=>{
