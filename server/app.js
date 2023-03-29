@@ -9,6 +9,9 @@ app.use(cookieParser());
 
 
 
+//middleware parses incoming requests with JSON
+app.use(express.urlencoded({extended:false}));
+app.use(express.json({limit: '50mb'}));
 
 
 
