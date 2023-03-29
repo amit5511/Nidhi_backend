@@ -18,6 +18,10 @@ app.use(function (req, res, next) {
 
 app.use(cors());
 
+//middleware parses incoming requests with JSON
+app.use(express.urlencoded({extended:false}));
+app.use(express.json({limit: '50mb'}));
+
 //mogodb connection
 const db_connection = require('./configure/dbConnection');
 const URL=process.env.db_URL;
