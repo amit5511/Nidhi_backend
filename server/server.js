@@ -16,7 +16,10 @@ app.use(function (req, res, next) {
 });
 
 
-app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin:'*',
+}));
 
 //middleware parses incoming requests with JSON
 app.use(express.urlencoded({extended:false}));
