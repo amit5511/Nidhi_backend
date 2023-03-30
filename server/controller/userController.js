@@ -30,7 +30,10 @@ const login = async (req, res, next) => {
             const { accessToken } = tokenService.generateToken({ _id: user._id });
             res.cookie('accessToken', accessToken, {
                 expireIn: 1000 * 60 * 60 * 30 * 24,
-                httpOnly: true
+                domain: window.location.hostname,
+               
+                path: '/',
+                secure: true
             })
             res.status(201).json({
                 user,
@@ -64,7 +67,10 @@ const register = async (req, res) => {
             //cookies expires in 1 year
             res.cookie('accessToken', accessToken, {
                 expireIn: 1000 * 60 * 60 * 30 * 24,
-                httpOnly: true
+                domain: window.location.hostname,
+               
+                path: '/',
+                secure: true
             })
             res.status(201).json({
                 user,
@@ -107,7 +113,9 @@ const logOutUser = async (req, res) => {
 
         res.cookie('accessToken',"", {
             expireIn: Date.now(),
-            httpOnly: true
+            domain: window.location.hostname,
+               path: '/',
+                secure: true
         })
        
 
@@ -208,7 +216,10 @@ const resetPassword = async (req, res) => {
 
        res.cookie('accessToken', accessToken, {
             expireIn: 1000 * 60 * 60 * 30 * 24,
-            httpOnly: true
+            domain: window.location.hostname,
+               
+                path: '/',
+                secure: true
         })
 
         res.status(201).json({
