@@ -1,22 +1,11 @@
+const express=require('express');
 const app=require('./app');
 const path=require('path')
-const cors=require('cors');
+
 
 //configure dot env
 const dotenv = require("dotenv");
 dotenv.config({ path: "server/configure/.env" });
-
-
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Accept, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
-
-
-app.use(cors());
 
 
 //mogodb connection
