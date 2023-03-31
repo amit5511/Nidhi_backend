@@ -4,6 +4,9 @@ const User = require('../models/user_model')
 const { sendEmail } = require('../utils/sendEmail')
 
 
+//configure dot env
+const dotenv = require("dotenv");
+dotenv.config({ path: "../configure/.env" });
 
 
 
@@ -31,7 +34,8 @@ const login = async (req, res, next) => {
             res.cookie('accessToken', accessToken, {
                 expireIn: 1000 * 60 * 60 * 30 * 24,
                 httpOnly:true,
-                secure: true
+                sameSite: process.env.dev === "development" ? true : "none",
+                secure: process.env.dev === "development" ? false : true,
             })
             res.status(201).json({
                 user,
@@ -66,7 +70,8 @@ const register = async (req, res) => {
             res.cookie('accessToken', accessToken, {
                 expireIn: 1000 * 60 * 60 * 30 * 24,
                 httpOnly:true,
-                secure: true
+                sameSite: process.env.dev === "development" ? true : "none",
+                secure: process.env.dev === "development" ? false : true,
             })
             res.status(201).json({
                 user,
@@ -110,7 +115,8 @@ const logOutUser = async (req, res) => {
         res.cookie('accessToken',"", {
             expireIn: Date.now(),
             httpOnly:true,
-                secure: true
+            sameSite: process.env.dev === "development" ? true : "none",
+                secure: process.env.dev === "development" ? false : true,
         })
        
 
@@ -212,7 +218,8 @@ const resetPassword = async (req, res) => {
        res.cookie('accessToken', accessToken, {
             expireIn: 1000 * 60 * 60 * 30 * 24,
             httpOnly:true,
-                secure: true
+            sameSite: process.env.dev === "development" ? true : "none",
+                secure: process.env.dev === "development" ? false : true,
         })
 
         res.status(201).json({
